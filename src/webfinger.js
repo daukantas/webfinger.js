@@ -18,7 +18,6 @@
  */
 
 if (typeof XMLHttpRequest === 'undefined') {
-  // XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   XMLHttpRequest = require('xhr2');
 }
 
@@ -107,9 +106,9 @@ if (typeof XMLHttpRequest === 'undefined') {
     xhr.timeout = this.config.request_timeout;
 
     function __processState() {
-      if (handlerSpent){
+      if (handlerSpent) {
         return;
-      }else{
+      } else {
         handlerSpent = true;
       }
 
@@ -149,7 +148,8 @@ if (typeof XMLHttpRequest === 'undefined') {
       }
     }
 
-    function __makeRequest() {
+    function __makeRequest(_url) {
+      url = _url || url;
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           __processState();
